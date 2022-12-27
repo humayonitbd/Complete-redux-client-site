@@ -14,7 +14,6 @@ const HomeProductsDetails = ({product}) => {
                 <p className="card-text">{details && details.slice(0, 100)}</p>
                 <Link to={`/productDetails/${_id}`}><button className='btn btn-danger w-100'>Details more</button></Link>
                 </div>
-           
                 </div>
             
             </div>

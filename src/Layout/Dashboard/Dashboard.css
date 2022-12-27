@@ -1,0 +1,30 @@
+
+.mainDashboardSection{
+    display: flex;
+    
+}
+.dashboardLeftSide{
+    width: 20%;
+    height: 100vh;
+}
+.dashboardRighttSide{
+    width: 80%;
+   
+}
+
+@media screen and (max-width: 991px){
+    .mainDashboardSection{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .dashboardLeftSide{
+        width: 100%;
+        height: 12vh;
+        text-align: center;
+    }
+    .dashboardRighttSide{
+        width: 100%;
+    }
+}

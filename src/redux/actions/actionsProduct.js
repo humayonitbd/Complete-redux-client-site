@@ -12,3 +12,9 @@ export const selectedProduct = (product) =>{
         payload: product,
     }
 }
+export const odersProduct = (orders) =>{
+    return{
+        type:ActionType.ORDERS_PRODUCTS,
+        payload: orders,
+    }
+}

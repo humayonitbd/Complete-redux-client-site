@@ -28,3 +28,15 @@ export const selecteProductsReducer =(state = initialState, {type, payload})=>{
             return state;
     }
 }
+
+export const ordersProductReduser =(state = initialState, {type, payload})=>{
+    switch (type) {
+        case ActionType.ORDERS_PRODUCTS:
+            
+           return {...state, orders:payload};
+    
+        default:
+            return state;
+    }
+
+}
