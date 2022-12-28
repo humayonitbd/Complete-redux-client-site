@@ -18,3 +18,10 @@ export const odersProduct = (orders) =>{
         payload: orders,
     }
 }
+
+export const allUsers = (users) =>{
+    return{
+        type:ActionType.ALL_USERS,
+        payload: users,
+    }
+}

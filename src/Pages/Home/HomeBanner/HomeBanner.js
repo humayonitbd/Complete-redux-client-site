@@ -5,7 +5,7 @@ import img2 from "../../../assete/bannar-img/img06.webp"
 
 const HomeBanner = () => {
     return (
-        <div className='my-2'>
+        <div className='my-2 px-md-3  px-sm-1 mx-md-5  mx-1 mx-sm-2'>
             <Carousel>
             <Carousel.Item>
                 <img

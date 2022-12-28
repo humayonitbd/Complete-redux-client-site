@@ -33,7 +33,7 @@ const loginGoogle=()=>{
 //sign out 
 const logOut = () =>{
     setLoading(true);
-    // localStorage.removeItem('review-project');
+    localStorage.removeItem('sendToken');
     return signOut(auth);
 }
 //profile updata

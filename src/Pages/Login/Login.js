@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useToken from '../../hooks/useJwt/useJwt';
 
 const Login = () => {
     const {login} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [emailLogin, setEmailLogin]= useState('');
+    const [token] = useToken(emailLogin);
     const from = location.state?.from?.pathname || '/';
+    if(token){
+        navigate(from, {replace: true})
+    }
     const loginHandler=(e)=>{
         e.preventDefault();
         console.log('hoase vai')
@@ -19,8 +25,9 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             console.log(user)
+            setEmailLogin(user.email)
             toast.success("Login successfull!!")
-            navigate(from, {replace: true})
+            // navigate(from, {replace: true})
         })
         .catch(err =>{
             toast.error(err.message)

@@ -1,14 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import { sendUsers } from '../../hooks/sendUsers';
+import useToken from '../../hooks/useJwt/useJwt';
 
 
 const SignUp = () => {
     const {user, createUser, profileUpdate} = useContext(AuthContext);
     const navigate = useNavigate();
+    const [emailSignup, setEmailSignup] = useState('');
+    const [token] = useToken(emailSignup);
+    if(token){
+        navigate('/');
+    }
     const signUpHandler=(e)=>{
         e.preventDefault();
         console.log('hoase vai')
@@ -30,12 +37,14 @@ const SignUp = () => {
         .then(result =>{
             const user = result.user
             console.log(user)
+            setEmailSignup(user.email)
             profileUpdate(name)
             .then(()=>console.log('name updated'))
             .catch(err =>console.log(err))
+            sendUsers(name, email);
             form.reset();
             toast.success("Create account successfull!!")
-            navigate('/')
+           
 
         })
         .catch(err =>console.log(err))

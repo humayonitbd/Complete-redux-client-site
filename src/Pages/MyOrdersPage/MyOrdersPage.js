@@ -1,21 +1,27 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { odersProduct } from '../../redux/actions/actionsProduct';
 
 const MyOrdersPage = () => {
+    const {user} = useContext(AuthContext)
     const orders = useSelector((state) => state.ordersProduct.orders)
    
     const dispatch = useDispatch();
     const fetchOrdersProducts = async()=>{
-        const response = await axios.get("http://localhost:5000/myOrders")
+        const response = await axios.get(`http://localhost:5000/myOrders?email=${user?.email}`,{
+          headers:{
+          authorization:`bearer ${localStorage.getItem('sendToken')}`
+       },
+        })
         .catch((err)=>console.log(err))
         dispatch(odersProduct(response.data))
     }
     useEffect(()=>{
         fetchOrdersProducts();
-    },[])
+    },[user?.email])
     console.log("orders",orders)
     return (
         <div>

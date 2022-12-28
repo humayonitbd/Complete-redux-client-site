@@ -40,3 +40,15 @@ export const ordersProductReduser =(state = initialState, {type, payload})=>{
     }
 
 }
+
+export const allUsers =(state = initialState, {type, payload})=>{
+    switch (type) {
+        case ActionType.ALL_USERS:
+            
+           return {...state, users:payload};
+    
+        default:
+            return state;
+    }
+
+}
