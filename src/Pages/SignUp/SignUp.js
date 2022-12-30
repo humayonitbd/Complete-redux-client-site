@@ -12,6 +12,7 @@ const SignUp = () => {
     const {user, createUser, profileUpdate} = useContext(AuthContext);
     const navigate = useNavigate();
     const [emailSignup, setEmailSignup] = useState('');
+    console.log('signup-email',emailSignup)
     const [token] = useToken(emailSignup);
     if(token){
         navigate('/');

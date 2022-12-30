@@ -25,3 +25,10 @@ export const allUsers = (users) =>{
         payload: users,
     }
 }
+
+export const paymentProduct = (payProduct) =>{
+    return{
+        type:ActionType.PAYMENT_PRODUCT,
+        payload: payProduct,
+    }
+}

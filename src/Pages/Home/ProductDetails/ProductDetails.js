@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import { selectedProduct } from '../../../redux/actions/actionsProduct';
-import SigngleProductDetails from './SigngleProductDetails';
+
 
 const ProductDetails = () => {
     const {user} = useContext(AuthContext);

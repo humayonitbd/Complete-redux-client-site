@@ -52,3 +52,16 @@ export const allUsers =(state = initialState, {type, payload})=>{
     }
 
 }
+
+export const paymentProductsReducer =(state = initialState, {type, payload})=>{
+    switch (type) {
+        case ActionType.PAYMENT_PRODUCT:
+            
+          return{
+            ...state, ...payload
+          }
+    
+        default:
+            return state;
+    }
+}

@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand className='fw-bold text-danger'>FackShop</Navbar.Brand>
+        <Link className='nav-link'><Navbar.Brand className='fw-bold text-danger'>FackShop</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
