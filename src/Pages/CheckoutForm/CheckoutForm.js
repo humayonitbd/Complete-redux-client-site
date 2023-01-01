@@ -7,9 +7,9 @@
 //     const {productPrice} = payItems;
 //     useEffect(() => {
 //       // Create PaymentIntent as soon as the page loads
-//       fetch("http://localhost:5000/create-payment-intent", {
+//       fetch("https://complete-redux-server-site.vercel.app/create-payment-intent", {
 //         method: "POST",
-//         headers: { 
+//         headers: {
 //           "Content-Type": "application/json" ,
 //           authorization:`bearer ${localStorage.getItem('sendToken')}`
 //       },
@@ -18,7 +18,7 @@
 //         .then((res) => res.json())
 //         .then((data) => setClientSecret(data.clientSecret));
 //     }, [productPrice]);
-  
+
 //     const stripe = useStripe();
 //   const elements = useElements();
 //     const handleSubmit= async(e)=>{

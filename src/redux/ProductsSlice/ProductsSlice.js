@@ -3,10 +3,9 @@
 // const { createSlice, createAsyncThunk} = require("@reduxjs/toolkit");
 
 // export const fetchAllProducts = createAsyncThunk("products/fetchProducts", async () => {
-//     const res = await axios.get("http://localhost:5000/allProducts");
+//     const res = await axios.get("https://complete-redux-server-site.vercel.app/allProducts");
 //     return res.data;
 // })
-
 
 // const productsSlice = createSlice({
 //     name: "products",

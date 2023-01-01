@@ -38,14 +38,32 @@ const SignUp = () => {
         .then(result =>{
             const user = result.user
             console.log(user)
-            setEmailSignup(user.email)
+           
             profileUpdate(name)
             .then(()=>console.log('name updated'))
             .catch(err =>console.log(err))
-            sendUsers(name, email);
+            const userInfo ={
+                userName: name,
+                userEmail: email,
+                role: "user",
+            }
+            fetch("https://complete-redux-server-site.vercel.app/users", {
+            method: "POST",
+            headers: {
+            "content-type": "application/json",
+            },
+            body: JSON.stringify(userInfo),
+            })
+            .then((res) => res.json())
+            .then((data) => {
+            console.log(data);
+            setEmailSignup(userInfo.userEmail)
+            })
+            .catch((err) => console.log(err));
+           
             form.reset();
             toast.success("Create account successfull!!")
-           
+            
 
         })
         .catch(err =>console.log(err))
