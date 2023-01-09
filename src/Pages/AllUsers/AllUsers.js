@@ -1,11 +1,13 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { allUsers } from "../../redux/actions/actionsProduct";
 
 const AllUsers = () => {
   const users = useSelector((state) => state.allUsers.users);
+  const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
   const fetchAllUsers = async () => {
@@ -16,8 +18,21 @@ const AllUsers = () => {
   };
   useEffect(() => {
     fetchAllUsers();
-  }, []);
+  }, [!loading]);
   console.log("orders", users);
+  const deleteUsers=(id)=>{
+    fetch(`https://complete-redux-server-site.vercel.app/users/${id}`,{
+      method:"DELETE"
+    })
+    .then(res =>res.json())
+    .then(data =>{
+      if (data.deletedCount) {
+        setLoading(false);
+        toast.success("Deleted  users successfull!!");
+        console.log(data)
+      }
+    })
+  }
   return (
     <div>
       <Table striped bordered hover size="sm">
@@ -27,6 +42,7 @@ const AllUsers = () => {
             <th>User Name</th>
             <th>User Email</th>
             <th>Role</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +55,7 @@ const AllUsers = () => {
               </td>
               <td className="">{user.userEmail}</td>
               <td className="">{user.role}</td>
-              {/* <td className=''><button className='btn btn-danger me-3'>Delete</button></td> */}
+              <td className=''><button onClick={()=>deleteUsers(user._id)} className='btn btn-danger'>Delete</button></td>
             </tr>
           ))}
         </tbody>
